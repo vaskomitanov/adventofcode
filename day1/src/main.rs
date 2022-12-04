@@ -9,14 +9,12 @@ fn calc_calories(file_path: &Path) -> std::io::Result<u32> {
         .group_by(|line| line.as_ref().map_or(false, |v| !v.is_empty()))
         .into_iter()
         .map(|(_, g)| {
-            g.map(|v| v.map_or_else(|_| 0, |s| s.parse::<u32>().unwrap_or_else(|_| 0)))
+            g.map(|v| v.map_or_else(|_| 0, |s| s.parse::<u32>().unwrap_or(0)))
                 .sum()
         })
         .max()
         .unwrap_or(0))
 }
-
-fn main() {}
 
 #[cfg(test)]
 mod tests {
@@ -36,3 +34,5 @@ mod tests {
         Ok(())
     }
 }
+
+fn main() {}

@@ -64,7 +64,7 @@ fn strategy_points(file_path: &Path) -> std::io::Result<u32> {
         .lines()
         .collect::<std::io::Result<Vec<_>>>()?
         .iter()
-        .map(|line| calculate_points(line.split(" ").collect_tuple()))
+        .map(|line| calculate_points(line.split(' ').collect_tuple()))
         .collect::<std::io::Result<Vec<_>>>()?
         .iter()
         .sum())
